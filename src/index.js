@@ -16,6 +16,8 @@ function onFindCountry(evt) {
 
     const name = evt.target.value.trim();
 
+    if(!name.length) return;
+
     resetMarkup(countryList);
     resetMarkup(countryInfo);
 
@@ -29,11 +31,9 @@ function onFindCountry(evt) {
 function showCountryInfo(names) {
     if (names.length >= 2 && names.length <= 10) {
         createMarkupCountries(names);
-        inputEl.textContent = '';
         
     } else if (names.length < 2) {
         createMarkupCountryInfo(names);
-        inputEl.textContent = '';
     } else {
         Notify.info('Too many matches found. Please enter a more specific name.');
     }
